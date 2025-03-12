@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trading Bot Dashboard</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      #trading-data {
+        padding: 20px;
+        border: 1px solid #ddd;
+      }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js"></script>
+    <script>
+      var socket = io.connect(
+        "http://" + document.domain + ":" + location.port
+      );
+
+      socket.on("trading_update", function (data) {
+        document.getElementById("trading-data").innerHTML = JSON.stringify(
+          data,
+          null,
+          2
+        );
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Trading Bot Dashboard</h1>
+    <div id="trading-data">Chargement des données...</div>
+  </body>
+</html>

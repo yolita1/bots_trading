@@ -1,0 +1,8 @@
+pandas
+numpy
+python-binance
+tensorflow
+scikit-learn
+asyncio
+smtplib
+email
